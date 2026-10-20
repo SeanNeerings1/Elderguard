@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private float speed = 15f;
-    [SerializeField] private int damage = 10;
+    //[SerializeField] private int damage = 10;
     [SerializeField] private float hitDistanceThreshold = 0.2f;
 
     private Transform target;

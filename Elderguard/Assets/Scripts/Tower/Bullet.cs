@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private float speed = 15f;
-    //[SerializeField] private int damage = 10;
+    [SerializeField] private int damage = 10;
     [SerializeField] private float hitDistanceThreshold = 0.2f;
 
     private Transform target;
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
         // Controleer of de kogel dit frame bij het doel aankomt
         if (dir.magnitude <= distanceThisFrame || dir.magnitude <= hitDistanceThreshold)
         {
-            //HitTarget();
+            HitTarget();
             return;
         }
 
@@ -43,5 +43,17 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    
+    // Deze methode handelt de impact af en verwijdert de kogel
+    private void HitTarget()
+    {
+        // Schade toebrengen als de vijand een EnemyHealth script heeft
+        //EnemyHealth enemy = target.GetComponent<EnemyHealth>();
+        //if (enemy != null)
+        //{
+          //  enemy.TakeDamage(damage);
+        //}
+
+        // Verwijder de kogel uit het spel
+        Destroy(gameObject);
+    }
 }

@@ -4,14 +4,19 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(Camera))]
 public class CameraFit : MonoBehaviour
 {
-    public Tilemap map;             
-    public float padding = 0.5f;   
-    public float bottomUiUnits = 0f; 
+    public Tilemap map;
+    public Color backgroundColor = new Color(0.60f, 0.90f, 0.31f);
 
     Camera cam;
     int lastW, lastH;
 
-    void Awake() { cam = GetComponent<Camera>(); cam.orthographic = true; }
+    void Awake()
+    {
+        cam = GetComponent<Camera>();
+        cam.orthographic = true;
+        cam.clearFlags = CameraClearFlags.SolidColor;
+        cam.backgroundColor = backgroundColor;
+    }
 
     void Update()
     {
@@ -22,14 +27,14 @@ public class CameraFit : MonoBehaviour
 
     void Fit()
     {
+        if (map == null) return;
+
         map.CompressBounds();
         Bounds b = map.localBounds;
         Vector3 center = map.transform.TransformPoint(b.center);
         float aspect = (float)Screen.width / Screen.height;
 
-        float sizeH = b.extents.y + padding + bottomUiUnits * 0.5f;
-        float sizeW = (b.extents.x + padding) / aspect;
-        cam.orthographicSize = Mathf.Max(sizeH, sizeW);
-        cam.transform.position = new Vector3(center.x, center.y - bottomUiUnits * 0.5f, -10f);
+        cam.orthographicSize = Mathf.Max(b.extents.y, b.extents.x / aspect);
+        cam.transform.position = new Vector3(center.x, center.y, -10f);
     }
 }

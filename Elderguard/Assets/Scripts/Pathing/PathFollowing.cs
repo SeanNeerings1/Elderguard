@@ -19,7 +19,11 @@ public class PathTester : MonoBehaviour
 
     void Update()
     {
-        if (_i >= WaypointPath.Instance.Count) return;
+        if (_i >= WaypointPath.Instance.Count)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         Vector3 target = Target(_i);
         transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);

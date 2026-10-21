@@ -3080,7 +3080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3048ec43f7e41b547bdc404c595e8170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
+  grid: {fileID: 900192779}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0

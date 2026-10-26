@@ -5,7 +5,6 @@ public class TowerPlacementManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Grid grid;
-    [SerializeField] private Tilemap pathTilemap;      
     [SerializeField] private LayerMask obstacleLayer;  
     [SerializeField] private LayerMask towerLayer;     
 
@@ -66,12 +65,6 @@ public class TowerPlacementManager : MonoBehaviour
 
     private bool CanPlaceTowerAt(Vector3Int cellPosition, Vector3 cellWorldPos)
     {
-       Debug.Log($"cell {cellPosition} | pathTilemap null? {pathTilemap == null}", this);
-        if (pathTilemap != null && pathTilemap.HasTile(cellPosition))
-        {
-            return false;
-        }
-
         Vector2 boxSize = (Vector2)grid.cellSize * 0.8f;
 
         if (obstacleLayer.value != 0 &&

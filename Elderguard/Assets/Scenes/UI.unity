@@ -466,7 +466,7 @@ MonoBehaviour:
   grid: {fileID: 2136402304}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 64
   towerLayer:
     serializedVersion: 2
     m_Bits: 8

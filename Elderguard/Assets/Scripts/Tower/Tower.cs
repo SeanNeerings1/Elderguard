@@ -10,12 +10,12 @@ public class SingleTargetTower : BaseTower
     {
         if (bulletPrefab == null || firePoint == null) return;
 
-        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet Bullet = bullet.GetComponent<Bullet>();
 
-        if (bullet != null)
+        if (Bullet != null)
         {
-            bullet.Seek(targetEnemy);
+            Bullet.Seek(targetEnemy);
         }
     }
 }

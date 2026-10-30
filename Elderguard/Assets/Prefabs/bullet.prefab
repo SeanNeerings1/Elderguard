@@ -101,4 +101,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  damage: 100
   hitDistanceThreshold: 0.2

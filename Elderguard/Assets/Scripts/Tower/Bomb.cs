@@ -4,67 +4,59 @@ public class Bomb : MonoBehaviour
 {
     [Header("Bomb Settings")]
     [SerializeField] private float speed = 15f;
-    //[SerializeField] private int damage = 10;
+    [SerializeField] private int damage = 15;
     [SerializeField] private float hitDistanceThreshold = 0.2f;
+    private float explosionRadius = 2.5f;
+    [SerializeField] private LayerMask enemyLayer;
 
     private Transform target;
 
-    // Wordt aangeroepen door de Tower om het doelwit in te stellen
     public void Seek(Transform _target)
     {
         target = _target;
     }
 
+    public void SetExplosionRadius(float radius)
+    {
+        explosionRadius = radius;
+    }
+
     private void Update()
     {
-        // Als het doelwit is vernietigd voordat de kogel er is, ruim de kogel op
         if (target == null)
         {
             Destroy(gameObject);
             return;
         }
 
-        // Richting en beweging bepalen
         Vector2 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
-        // Controleer of de kogel dit frame bij het doel aankomt
         if (dir.magnitude <= distanceThisFrame || dir.magnitude <= hitDistanceThreshold)
         {
-            HitTarget();
+            Explode();
             return;
         }
 
-        // Beweeg de kogel richting het doel
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
-        // Optioneel: Draai de kogel in de vliegrichting
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    // Deze methode handelt de impact af en verwijdert de kogel
-    private void HitTarget()
+    private void Explode()
     {
-        // Schade toebrengen als de vijand een EnemyHealth script heeft
-        //EnemyHealth enemy = target.GetComponent<EnemyHealth>();
-        //if (enemy != null)
-        //{
-        //  enemy.TakeDamage(damage);
-        //}
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
 
-        // Verwijder de kogel uit het spel
-        Destroy(gameObject);
-    }
-
-    public void SetExplosionRadius(float radius)
-    {
-        // Hier kun je de logica toevoegen om de explosieradius van de bom in te stellen
-        // Bijvoorbeeld, als je een SphereCollider gebruikt voor de explosie:
-        CircleCollider2D collider = GetComponent<CircleCollider2D>();
-        if (collider != null)
+        foreach (Collider2D enemyCollider in hitEnemies)
         {
-            collider.radius = radius;
+            Enemy enemyHealth = enemyCollider.GetComponent<Enemy>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damage);
+            }
         }
+
+        Destroy(gameObject);
     }
 }

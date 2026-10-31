@@ -111,7 +111,7 @@ MonoBehaviour:
   rotationSpeed: 360
   bombPrefab: {fileID: 1748588946633033251, guid: e09c24cb4093d3a43a6d35bf11ca008b, type: 3}
   firePoint: {fileID: 4433674657973028741}
-  explosionRadius: 2
+  explosionRadius: 50
 --- !u!61 &2298389279168787900
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class SingleTargetTower : BaseTower
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
+
     protected override void Shoot()
     {
         if (bulletPrefab == null || firePoint == null) return;

@@ -7,7 +7,10 @@ public abstract class BaseTower : MonoBehaviour
     [SerializeField] protected float fireRate = 1f; 
     [SerializeField] protected LayerMask enemyLayer;
     [SerializeField] protected Transform rotationPart; 
-    [SerializeField] protected float rotationSpeed = 360f; 
+    [SerializeField] protected float rotationSpeed = 360f;
+    [SerializeField] protected int cost = 100;
+
+    public int Cost => cost;
 
     protected Transform targetEnemy;
     private float fireCountdown = 0f;

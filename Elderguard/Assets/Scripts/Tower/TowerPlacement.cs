@@ -1,16 +1,16 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class TowerPlacementManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Grid grid;
-    [SerializeField] private LayerMask obstacleLayer;  
-    [SerializeField] private LayerMask towerLayer;     
+    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private LayerMask towerLayer;
 
     private GameObject towerToBuildPrefab;
     private GameObject currentPreviewObject;
     private SpriteRenderer previewRenderer;
+    private BaseTower towerScriptToBuild;
 
     private void Update()
     {
@@ -26,13 +26,17 @@ public class TowerPlacementManager : MonoBehaviour
         {
             currentPreviewObject.transform.position = snappedWorldPos;
 
-            bool isValid = CanPlaceTowerAt(cellPosition, snappedWorldPos);
+            bool isValidTile = CanPlaceTowerAt(cellPosition, snappedWorldPos);
+            bool canAfford = HasEnoughGold();
+            bool canPlace = isValidTile && canAfford;
+
+
             if (previewRenderer != null)
             {
-                previewRenderer.color = isValid ? new Color(0f, 1f, 0f, 0.5f) : new Color(1f, 0f, 0f, 0.5f);
+                previewRenderer.color = canPlace ? new Color(0f, 1f, 0f, 0.5f) : new Color(1f, 0f, 0f, 0.5f);
             }
 
-            if (Input.GetMouseButtonDown(0) && isValid)
+            if (Input.GetMouseButtonDown(0) && canPlace)
             {
                 PlaceTower(snappedWorldPos);
             }
@@ -43,6 +47,7 @@ public class TowerPlacementManager : MonoBehaviour
             }
         }
     }
+
     public void SelectTowerToPlace(GameObject towerPrefab)
     {
         if (currentPreviewObject != null)
@@ -52,6 +57,12 @@ public class TowerPlacementManager : MonoBehaviour
 
         towerToBuildPrefab = towerPrefab;
 
+        // Haal het BaseTower script op van de prefab om de prijs te weten
+        if (towerToBuildPrefab != null)
+        {
+            towerScriptToBuild = towerToBuildPrefab.GetComponent<BaseTower>();
+        }
+
         currentPreviewObject = new GameObject("TowerPreview");
         previewRenderer = currentPreviewObject.AddComponent<SpriteRenderer>();
 
@@ -59,38 +70,45 @@ public class TowerPlacementManager : MonoBehaviour
         if (prefabRenderer != null)
         {
             previewRenderer.sprite = prefabRenderer.sprite;
-            previewRenderer.sortingOrder = 10; 
+            previewRenderer.sortingOrder = 10;
         }
+    }
+
+    private bool HasEnoughGold()
+    {
+        if (towerScriptToBuild == null || EconomyManager.Instance == null) return false;
+
+        return EconomyManager.Instance.CanAfford(towerScriptToBuild.Cost);
     }
 
     private bool CanPlaceTowerAt(Vector3Int cellPosition, Vector3 cellWorldPos)
     {
-        Vector2 boxSize = (Vector2)grid.cellSize * 0.8f;
+        Collider2D obstacleCheck = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0f, obstacleLayer);
+        if (obstacleCheck != null) return false;
 
-        if (obstacleLayer.value != 0 &&
-            Physics2D.OverlapBox(cellWorldPos, boxSize, 0f, obstacleLayer) != null)
-        {
-            return false;
-        }
-
-        if (Physics2D.OverlapBox(cellWorldPos, boxSize, 0f, towerLayer) != null)
-        {
-            return false;
-        }
+        Collider2D towerCheck = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0f, towerLayer);
+        if (towerCheck != null) return false;
 
         return true;
     }
 
     private void PlaceTower(Vector3 position)
     {
-        Instantiate(towerToBuildPrefab, position, Quaternion.identity);
+        if (towerScriptToBuild == null || EconomyManager.Instance == null) return;
 
-        CancelPlacement();
+        if (EconomyManager.Instance.TrySpend(towerScriptToBuild.Cost))
+        {
+            Instantiate(towerToBuildPrefab, position, Quaternion.identity);
+            CancelPlacement();
+        }
+        else
+        {
+            Debug.Log("Niet genoeg geld om deze toren te bouwen!");
+        }
     }
 
     public void CancelPlacement()
     {
-        towerToBuildPrefab = null;
         if (currentPreviewObject != null)
         {
             Destroy(currentPreviewObject);

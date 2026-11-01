@@ -5,7 +5,7 @@ public class Summoner : Enemy
 {
 
     [Header("Summoner Stats")]
-    [SerializeField] private float _health = 200f;
+    [SerializeField] private float _health = 150f;
     [SerializeField] private float _defence = 4f;
 
     [Header("Summoning")]

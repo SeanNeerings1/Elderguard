@@ -34,13 +34,14 @@ public class GameManage : MonoBehaviour
 
     public void DamageBase(int amount)
     {
+        Debug.Log("DamageBase called: " + amount + ", IsOver = " + IsOver);   // <-- add this line
         if (IsOver) return;
         BaseHealth = Mathf.Max(0, BaseHealth - amount);
         UpdateText();
         OnBaseHealthChanged?.Invoke(BaseHealth);
         if (BaseHealth == 0) End(false);
     }
-    
+
     public void Win() { if (!IsOver) End(true); }
 
     void End(bool won)

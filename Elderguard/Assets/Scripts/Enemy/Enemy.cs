@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
         if ((transform.position - target).sqrMagnitude < 0.0001f && ++next >= path.Count)
         {
             dead = true;
+            Debug.Log(name + " reached the end, baseDamage = " + baseDamage);   // <-- add this line
             GameManage.Instance.DamageBase(baseDamage);
             Destroy(gameObject);
         }

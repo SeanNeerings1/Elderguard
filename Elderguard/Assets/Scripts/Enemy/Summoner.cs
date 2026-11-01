@@ -3,23 +3,26 @@ using System.Collections;
 
 public class Summoner : Enemy
 {
+
+    [Header("Summoner Stats")]
+    [SerializeField] private float _health = 200f;
+    [SerializeField] private float _defence = 4f;
+
+    [Header("Summoning")]
     [SerializeField] private GameObject _enemyToSummon;
     [SerializeField] private Transform _minionSpawnPos;
     [SerializeField] private float _summonDuration = 2f;
     [SerializeField] private float _timeBetweenSummons = 3f;
     [SerializeField] private int _enemiesToSummon = 4;
-
-    private float _originalSpeed;
     private bool _summoning;
 
     public bool IsSummoning => _summoning;
 
-    void Start() // if Enemy has a Start(), make it protected virtual there and use "protected override void Start()" + base.Start()
+    void Start()
     {
-        _originalSpeed = _speed;
+        SetStats(_health, _defence); 
         StartCoroutine(SummonLoop());
     }
-
     private IEnumerator SummonLoop()
     {
         while (true)
@@ -39,8 +42,6 @@ public class Summoner : Enemy
             Instantiate(_enemyToSummon, _minionSpawnPos.position, Quaternion.identity);
             yield return new WaitForSeconds(delay);
         }
-
-        _speed = _originalSpeed;
         _summoning = false;
     }
 }

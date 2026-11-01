@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Minion : Enemy
 {
+    [Header("Minion Stats")]
+    [SerializeField] private float _health = 200f;
+    [SerializeField] private float _defence = 4f;
     private void Start()
     {
-        SetStats(50f, 8f, 0f);
+        SetStats(_health, _defence);
     }
 }

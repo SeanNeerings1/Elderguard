@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reward: 8
-  baseDamage: 1
+  baseDamage: 20
   healthPerWave: 5
   isBoss: 1
   _health: 500

@@ -106,7 +106,7 @@ MonoBehaviour:
   baseDamage: 1
   healthPerWave: 5
   isBoss: 0
-  _health: 150
+  _health: 250
   _defence: 10
 --- !u!114 &6775044053610500679
 MonoBehaviour:

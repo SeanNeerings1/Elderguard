@@ -135,37 +135,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!1 &3766565856381527211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6107608942166853735}
-  m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6107608942166853735
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766565856381527211}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0.09939897, z: 711.9109}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8292179614814890481}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4775326260273299235
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +166,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6298706613434586347}
-  - {fileID: 6107608942166853735}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7675381067665998398
@@ -220,8 +188,8 @@ MonoBehaviour:
   rotationPart: {fileID: 8292179614814890481}
   rotationSpeed: 360
   cost: 50
-  bulletPrefab: {fileID: 3066048648686614391, guid: 9c4ad783c1973e84bb04da3cf3221b08, type: 3}
-  firePoint: {fileID: 6107608942166853735}
+  bulletPrefab: {fileID: 4945809050373956948, guid: 4075272cd2675f74c9c6d7f20f77e8e4, type: 3}
+  firePoint: {fileID: 8800075090778450296}
 --- !u!1 &7223328721933159575
 GameObject:
   m_ObjectHideFlags: 0

@@ -407,7 +407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BOMBER
+  m_text: Mage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -817,7 +817,7 @@ MonoBehaviour:
         m_MethodName: SelectTowerToPlace
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6221626268350991547, guid: 41570856dea6dee4f89cd813ac6d7d20, type: 3}
+          m_ObjectArgument: {fileID: 5959856675236777869, guid: 130acb58e9b97fb498270860345548d2, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -950,7 +950,7 @@ MonoBehaviour:
         m_MethodName: SelectTowerToPlace
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 913496292579419085, guid: e2503b6f25ecf974388ea4faba50367c, type: 3}
+          m_ObjectArgument: {fileID: 118105097177576487, guid: 66dfb9c8b0f35ad41adb1df6e121954c, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

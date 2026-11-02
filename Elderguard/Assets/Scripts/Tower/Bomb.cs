@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float speed = 15f;
     [SerializeField] private int damage = 15;
     [SerializeField] private float hitDistanceThreshold = 0.2f;
-    private float explosionRadius = 2.5f;
+    [SerializeField] private float explosionRadius = 2.5f;
     [SerializeField] private LayerMask enemyLayer;
 
     private Transform target;

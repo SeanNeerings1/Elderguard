@@ -10,8 +10,8 @@ public class GameManage : MonoBehaviour
 
     [SerializeField] int startingBaseHealth = 20;
     [SerializeField] TMP_Text healthText;     
-    [SerializeField] TMP_Text waveText;        
-    [SerializeField] GameObject winPanel, losePanel;
+    [SerializeField] TMP_Text waveText;
+    [SerializeField] string[] levelOrder;   
 
     public int BaseHealth { get; private set; }
     public bool IsOver { get; private set; }
@@ -23,8 +23,6 @@ public class GameManage : MonoBehaviour
         Instance = this;
         BaseHealth = startingBaseHealth;
         Time.timeScale = 1f;
-        if (winPanel) winPanel.SetActive(false);
-        if (losePanel) losePanel.SetActive(false);
         UpdateText();
     }
 
@@ -47,9 +45,13 @@ public class GameManage : MonoBehaviour
     void End(bool won)
     {
         IsOver = true;
-        Time.timeScale = 0f;
-        if (won && winPanel) winPanel.SetActive(true);
-        if (!won && losePanel) losePanel.SetActive(true);
+
+        LevelMemory.Current = SceneManager.GetActiveScene().name;
+        int i = Array.IndexOf(levelOrder, LevelMemory.Current);
+        LevelMemory.Next = (i >= 0 && i + 1 < levelOrder.Length) ? levelOrder[i + 1] : "";
+
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene(won ? "Victory" : "GameOver");
     }
 
     public void SetWave(int wave, int total) { if (waveText) waveText.text = "Wave " + wave + "/" + total; }

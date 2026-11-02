@@ -4132,6 +4132,18 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 167024303}
+    - target: {fileID: 6215234987738384752, guid: d19d1fd61f79bad40bdd3092a306e561, type: 3}
+      propertyPath: levelOrder.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215234987738384752, guid: d19d1fd61f79bad40bdd3092a306e561, type: 3}
+      propertyPath: 'levelOrder.Array.data[0]'
+      value: SampleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215234987738384752, guid: d19d1fd61f79bad40bdd3092a306e561, type: 3}
+      propertyPath: 'levelOrder.Array.data[1]'
+      value: IcyRidge
+      objectReference: {fileID: 0}
     - target: {fileID: 6803405635642906155, guid: d19d1fd61f79bad40bdd3092a306e561, type: 3}
       propertyPath: m_LocalPosition.x
       value: 720.023

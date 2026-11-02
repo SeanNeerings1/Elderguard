@@ -6,11 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: dce64d1518a62cd4b8c46ccdd9a4df68
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/IcyRidge.unity
+    guid: a9f30143b5c85024ebfe1f94598c1920
+  - enabled: 1
     path: Assets/Scenes/UI.unity
     guid: 4f8d297d1a3e8a646bb317ec9966a0ef
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: bc64e269e2091eb47bba5cafd313a6d0
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: a27aa7d67812367498fffdef9f52a7a3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

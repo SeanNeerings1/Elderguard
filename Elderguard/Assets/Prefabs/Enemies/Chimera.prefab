@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _z: 10
-  _rotationOffset: 0
+  _rotationOffset: -90
 --- !u!58 &-818600333268842270
 CircleCollider2D:
   m_ObjectHideFlags: 0

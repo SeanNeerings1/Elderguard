@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4395030345393069052}
   - component: {fileID: 3159781534181574848}
   - component: {fileID: 2795950107624567377}
-  m_Layer: 0
+  - component: {fileID: -7434998711937192150}
+  m_Layer: 6
   m_Name: Necromancer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,6 +129,42 @@ MonoBehaviour:
   _speed: 3
   _z: 10
   _rotationOffset: -90
+--- !u!58 &-7434998711937192150
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729405026943685472}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.1150001
 --- !u!1 &9082937981258646792
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4512914681097241811}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: minionSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

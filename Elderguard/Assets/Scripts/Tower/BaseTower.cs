@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseTower : MonoBehaviour
@@ -12,6 +13,15 @@ public abstract class BaseTower : MonoBehaviour
 
     public int Cost => cost;
 
+    public static readonly List<BaseTower> All = new List<BaseTower>();
+
+    public bool IsDisabled { get; private set; }
+
+    public void SetDisabled(bool value) => IsDisabled = value;
+
+    protected virtual void OnEnable() => All.Add(this);
+    protected virtual void OnDisable() => All.Remove(this);
+
     protected Transform targetEnemy;
     private float fireCountdown = 0f;
 
@@ -22,6 +32,10 @@ public abstract class BaseTower : MonoBehaviour
 
     protected virtual void Update()
     {
+        Debug.Log($"{name} disabled={IsDisabled} target={targetEnemy}");
+
+        if (IsDisabled) return;
+
         fireCountdown -= Time.deltaTime;
 
         if (targetEnemy == null) return;
@@ -41,6 +55,7 @@ public abstract class BaseTower : MonoBehaviour
     protected virtual void UpdateTarget()
     {
         Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
+        Debug.Log($"{name} found {enemiesInRange.Length} in range, mask={enemyLayer.value}");   // temporary
         float shortestDistance = Mathf.Infinity;
         Transform nearestEnemy = null;
 

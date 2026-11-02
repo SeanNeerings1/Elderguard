@@ -3,33 +3,30 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    // Every living enemy. WaveManager uses this.
     public static readonly List<Enemy> All = new List<Enemy>();
 
     [Header("Stats")]
     public int reward = 8;
     public int baseDamage = 1;
-    public float healthPerWave = 5f;   // extra health per wave number
+    public float healthPerWave = 5f;   
     public bool isBoss;
 
     protected float maxHealth;
     protected float health;
     protected float defence;
     protected bool dead;
-    int wave;
+    protected int wave;
 
     protected virtual void Awake() { }
 
     void OnEnable() => All.Add(this);
     void OnDisable() => All.Remove(this);
 
-    // Called by WaveManager right after spawning
     public void Init(int wave)
     {
         this.wave = wave;
     }
 
-    // Your original method, now with wave scaling built in
     public void SetStats(float health, float defence)
     {
         maxHealth = health + wave * healthPerWave;

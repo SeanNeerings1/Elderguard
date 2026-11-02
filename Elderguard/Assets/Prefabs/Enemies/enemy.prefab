@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8602162702239607128}
   - component: {fileID: 5330950411121590491}
   - component: {fileID: 8073821619642898942}
-  - component: {fileID: 2635295622776445717}
   m_Layer: 6
   m_Name: enemy
   m_TagString: Untagged
@@ -125,21 +124,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &2635295622776445717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9200335156372583965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55710a6a82e3d144992d435853d71244, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  maxHealth: 40
-  healthPerWave: 5
-  reward: 8
-  baseDamage: 1
-  isBoss: 0

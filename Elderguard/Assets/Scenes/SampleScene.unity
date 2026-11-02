@@ -3088,17 +3088,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - groups:
-    - prefab: {fileID: 2635295622776445717, guid: 0e2fda1cc1b11d64999bec5f9dbe72da, type: 3}
-      count: 3
-      interval: 1
-    - prefab: {fileID: 2635295622776445717, guid: 0e2fda1cc1b11d64999bec5f9dbe72da, type: 3}
-      count: 3
+    - prefab: {fileID: 3159781534181574848, guid: 5c0701b2295a5544ab5c2fec065f8b60, type: 3}
+      count: 2
       interval: 1
   - groups:
-    - prefab: {fileID: 2635295622776445717, guid: 0e2fda1cc1b11d64999bec5f9dbe72da, type: 3}
+    - prefab: {fileID: 0}
       count: 3
       interval: 1
-    - prefab: {fileID: 2635295622776445717, guid: 0e2fda1cc1b11d64999bec5f9dbe72da, type: 3}
+    - prefab: {fileID: 0}
       count: 3
       interval: 1
   bossPrefab: {fileID: 0}
